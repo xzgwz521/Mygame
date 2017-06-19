@@ -12,8 +12,8 @@ from random import *
 pygame.init()
 pygame.mixer.init()
 
-bg_size=width,height=400,700
-screen=pygame.display.set_mode(bg_size)
+bg_size = width, height = 400, 700
+screen = pygame.display.set_mode(bg_size)
 pygame.display.set_caption("飞机大战")
 
 background=pygame.image.load("images/background.png").convert()
@@ -48,45 +48,47 @@ enemy3_down_sound.set_volume(0.5)
 me_down_sound = pygame.mixer.Sound("sound/me_down.wav")
 me_down_sound.set_volume(0.2)
 
-def add_small_enemies(group1,group2,num):
+
+def add_small_enemies(group1, group2, num):
     for i in range(num):
-        e1=enemy.SmallEnemy(bg_size)
+        e1 = enemy.SmallEnemy(bg_size)
         group1.add(e1)
         group2.add(e1)
 
-def add_mid_enemies(group1,group2,num):
+
+def add_mid_enemies(group1, group2, num):
     for i in range(num):
-        e2=enemy.MidEnemy(bg_size)
+        e2 = enemy.MidEnemy(bg_size)
         group1.add(e2)
         group2.add(e2)
 
-def add_big_enemies(group1,group2,num):
+
+def add_big_enemies(group1, group2, num):
     for i in range(num):
-        e3=enemy.BigEnemy(bg_size)
+        e3 = enemy.BigEnemy(bg_size)
         group1.add(e3)
         group2.add(e3)
 
-def inc_speed(target,inc):
+
+def inc_speed(target, inc):
     for each in target:
-        each.speed+=inc
+        each.speed += inc
 
 
 def main():
     pygame.mixer.music.play(-1)
 
-    #生成我方飞机
+    # 生成我方飞机
     me=myplane.MyPlane(bg_size)
 
-    
-
-    #中弹图片索引
-    e1_destroy_index=0
-    e2_destroy_index=0
-    e3_destroy_index=0
-    me_destroy_index=0
+    # 中弹图片索引
+    e1_destroy_index = 0
+    e2_destroy_index = 0
+    e3_destroy_index = 0
+    me_destroy_index = 0
     
     enemies=pygame.sprite.Group()
-    #生成敌方小型飞机
+    # 生成敌方小型飞机
     small_enemies=pygame.sprite.Group()
     add_small_enemies(small_enemies,enemies,15)
     #生成敌方中型飞机
